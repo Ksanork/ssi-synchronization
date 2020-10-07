@@ -23,6 +23,7 @@ Plik `01_sensor.pipeline` pokazuje przykładowe wykorzystanie w pipeline.
 * `sr` - częstotliwość (_sample rate_), typ `FLOAT`, jeżeli również `auto_init` ustawione jest jako `1` to brany pod uwagę jest paramatr `sr`, a nie wartość z pliku
 * `headers_ln` - ilość lini nagłówkowych na początku pliku, którę będą ignorowane podczas wczytywania danych do strumienia, typ `INTEGER`
 * `auto_init` - jeżeli ustawione jako `1` to skrypt stara się pobrać częstotliwość z linii nagłówkowych (na podstawie domyślnego formatu opisanego wyżej). Domyślnie ustawione jako `1`
+* `offset` - od której próbki danych rozpocząć strumień, typ `INTEGER`
 
 ##### Przykładowy plik csv:
 ```csv
