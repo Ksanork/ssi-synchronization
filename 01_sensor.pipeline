@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<pipeline>
+
+	<register>
+		<load name="python"/>
+		<load name="graphic"/>
+	</register>
+
+    <!-- Sensors -->
+	<sensor create="PythonSensor" optsstr="path=HR.csv;headers_ln=2;sr=10.0" script="simple_columns_csv_sensor" block="0.1">
+		<output channel="csv_data" pin="hr" />
+	</sensor>
+
+	<sensor create="PythonSensor" optsstr="path=TEMP.csv;headers_ln=2;sr=10.0" script="simple_columns_csv_sensor" block="0.1">
+		<output channel="csv_data" pin="temp"/>
+	</sensor>
+
+	<sensor create="PythonSensor" optsstr="path=BVP.csv;headers_ln=2;sr=10.0" script="simple_columns_csv_sensor" block="0.1">
+		<output channel="csv_data" pin="bvp"/>
+	</sensor>
+
+	<sensor create="PythonSensor" optsstr="path=test.csv;headers_ln=2;sr=10.0" script="simple_columns_csv_sensor" block="0.1">
+		<output channel="csv_data" pin="eda"/>
+	</sensor>
+	<!---->
+
+	<!-- Visualization -->
+	<consumer create="SignalPainter:plot" title="HR" size="10.0">
+		<input pin="hr" frame="0.1s" />
+	</consumer>
+
+	<consumer create="SignalPainter:plot" title="TEMP" size="10.0">
+		<input pin="temp" frame="0.1s"/>
+	</consumer>
+
+	<consumer create="SignalPainter:plot" title="BVP" size="10.0">
+		<input pin="bvp" frame="0.1s"/>
+	</consumer>
+
+	<consumer create="SignalPainter:plot" title="EDA" size="10.0">
+		<input pin="eda" frame="0.1s"/>
+	</consumer>
+
+	<object create="Decorator" icon="true" title="Pipeline">
+		<area pos="0,0,400,600">console</area>
+		<area pos="400,0,400,600">plot*</area>
+	</object>
+	<!---->
+
+</pipeline>
